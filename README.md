@@ -15,3 +15,10 @@ npm install @reduxjs/toolkit
 npm install react-redux
 https://redux-toolkit.js.org/introduction/getting-started
 ```
+
+
+```
+Dispatch -> Reducer -> Store
+Dispatch uses a Reducer to do changes in a Store
+
+```
