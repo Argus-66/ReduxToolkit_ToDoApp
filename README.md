@@ -17,8 +17,6 @@ https://redux-toolkit.js.org/introduction/getting-started
 ```
 
 
-```
+-How it works
 Dispatch -> Reducer -> Store
 Dispatch uses a Reducer to do changes in a Store
-
-```
