@@ -1,11 +1,16 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { removeTodo } from '../features/todo/todoSlice'
+import { removeTodo, toggleComplete } from '../features/todo/todoSlice'
 
 function Todos() {
     
     const todos = useSelector(state => state.todos)
     const dispatch = useDispatch()
+
+    const toggleCompleted = (id) => {
+      dispatch(toggleComplete(id))
+    }
+
 
   return (
     <>
@@ -13,10 +18,24 @@ function Todos() {
     <ul className="list-none">
         {todos.map((todo) => (
           <li
-            className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
             key={todo.id}
+            className={`mt-4 flex justify-between items-center border border-black/10 rounded-lg px-4 py-2 shadow-sm shadow-white/50 duration-300  text-black ${
+              todo.completed ? "bg-[#1fee1fd0]" : "bg-zinc-800"
+          }`}
+          
           >
-            <div className='text-white'>{todo.text}</div>
+            
+            
+            <div className='text-white'>
+          
+            <input
+              type="checkbox"
+              className="cursor-pointer mr-5"
+              checked={todo.completed}
+              onChange={() => toggleCompleted(todo.id)}
+          />
+              {todo.text}
+              </div>
             <button
              onClick={() => dispatch(removeTodo(todo.id))}
               className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
